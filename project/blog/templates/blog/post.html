@@ -1,0 +1,92 @@
+<style>
+    .dates {
+        font-size: 11pt;
+    }
+    .post{
+        width: 60%;
+        border: 2px solid palegreen;
+        margin: 15px;
+    }
+    .comments{
+        width: 40%;
+        border: 2px solid grey;
+        margin: 15px;
+    }
+    .left {
+        width: 20%;
+    }
+    .top {
+        height: 30px
+    }
+    .text {
+        text-align: center;
+        padding: 10px;
+    }
+</style>
+{% extends "core/base.html" %}
+
+{% block back %}
+    <button onclick="location.href='{% url "blogs:particular_blog" pk=post.blog.id%}'">
+        Назад</button>
+
+{% endblock %}
+
+
+{% block title %}
+    <span>Пост в блоге "{{ post.blog.title }}"</span>
+{% endblock %}
+
+{% block content %}
+
+    {% if post.author == user %}
+        <a href="{% url "blogs:edit_post" pk=post.id %}">Редактировать пост</a>
+    {% endif %}
+
+    <table class="post" rules="cols" border="2">
+        <tr class="top">
+            <td class="left"><b>Автор: {{ post.author }}</b></td>
+            <td>
+                <span><b>#{{ post.id }}</b></span>
+                <a href="{% url "blogs:particular_post" pk=post.id%}">
+                    <b>{{ post.title }}</b>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td class="dates left">
+                <p>Создан: {{ post.created_at.date }}</p>
+                <p>Редактирован: {{ post.updated_at.date }}</p>
+            </td>
+            <td class="text">{{ post.text }}</td>
+        </tr>
+    </table>
+
+    {% include "core/pagination.html" %}
+
+    {% for comment in object_list %}
+        <div style="font-size: 14pt">
+            <table class="comments" rules="cols" border="2">
+                <tr class="top">
+                    <td class="left"><b>Автор: {{ comment.author }}</b></td>
+                    <td>
+                        <span><b>Комментарий #{{ comment.id }}</b></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="dates left">
+                        <p>Создан: {{ comment.created_at.date }}</p>
+                        <p>Редактирован: {{ comment.updated_at.date }}</p>
+                    </td>
+                    <td class="text">{{ comment.text }}</td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+
+    <form action="" method="post">
+        {{ form }}
+        {% csrf_token %}
+        <input type="submit" value="Add">
+    </form>
+
+{% endblock %}

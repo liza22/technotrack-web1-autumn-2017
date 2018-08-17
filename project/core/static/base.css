@@ -1,0 +1,74 @@
+button {
+    background: #B2EC5D;
+    border: 1px solid darkslategrey;
+}
+
+.nav-link {
+    position: relative;
+    color: #cdddeb;
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #fff;
+    background-color: transparent;
+}
+
+body {
+    padding-top: 100px;
+    width: 100%;
+    margin: auto;
+}
+
+.username {
+    position: fixed;
+    right: 6em;
+    top: 8px;
+}
+
+.bg-custom {
+    background-color: #3D2B1F;
+}
+
+.logo {
+    height: 25px;
+    margin-top: -7px;
+    margin-right: -7px;
+}
+.dates {
+    font-size: 11pt;
+}
+table {
+    width: 60%;
+    border: 2px solid palegreen;
+    margin: auto;
+}
+.top-nav {
+    width: 80%;
+    margin: auto;
+}
+.left {
+    width: 20%;
+}
+.top {
+    height: 30px
+}
+.text {
+    text-align: center;
+    padding: 10px;
+}
+#top-nav-left {
+    width: 25%;
+    display: inline-block;
+}
+#top-nav-right {
+    width: 25%;
+    display: inline-block;
+}
+#top-nav-middle {
+    width: 40%;
+    display: inline-block;
+}
+.container {
+    width: 70%;
+    margin: auto;
+}

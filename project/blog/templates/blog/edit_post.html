@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+    Внесите нужные изменения.
+{% endblock %}
+
+{% block content %}
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="title">Название</label>
+            <input type="text" class="form-control" id="title" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="post_text">Текст поста</label>
+            <textarea class="form-control" id="post_text" placeholder=""></textarea>
+        </div>
+        <button type="submit" class="btn">Add</button>
+    </form>
+{% endblock %}
